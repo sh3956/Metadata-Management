@@ -22,4 +22,14 @@ public class MetaDatabaseServiceTest {
         metaDatabase.setLocation("hdfs://hadoop000:8020/user/hive/warehouse");
         metaDatabaseService.save(metaDatabase);
     }
+
+    @Test
+    public void testQuery(){
+        Iterable<MetaDatabase> metaDatabases = metaDatabaseService.query();
+        for(MetaDatabase metaDatabase: metaDatabases){
+            System.out.println(metaDatabase.getId());
+            System.out.println(metaDatabase.getName());
+            System.out.println(metaDatabase.getLocation());
+        }
+    }
 }
