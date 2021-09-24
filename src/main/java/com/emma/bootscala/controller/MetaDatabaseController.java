@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/meta")
+@RequestMapping("/meta/database")
 public class MetaDatabaseController {
 
     @Autowired
@@ -19,6 +19,11 @@ public class MetaDatabaseController {
     public String save(@ModelAttribute MetaDatabase metaDatabase){
         metaDatabaseService.save(metaDatabase);
         return "success";
+    }
+
+    @RequestMapping(value = "/", method= RequestMethod.GET)
+    public Iterable<MetaDatabase> query(){
+        return metaDatabaseService.query();
     }
 
 }
